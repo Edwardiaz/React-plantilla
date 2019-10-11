@@ -55,7 +55,7 @@ const navUsers = [
 
 const navProducts = [
   { to: '/catalogo', name: 'Catalogo', exact: false, Icon: MdTextFields },
-  { to: '/tables', name: 'Categorias', exact: false, Icon: MdBorderAll },
+  { to: '/category', name: 'Categorias', exact: false, Icon: MdBorderAll },
 ];
 
 const pageContents = [

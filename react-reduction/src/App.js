@@ -21,7 +21,8 @@ const FormPage = React.lazy(() => import('pages/FormPage'));
 const InputGroupPage = React.lazy(() => import('pages/InputGroupPage'));
 const ModalPage = React.lazy(() => import('pages/ModalPage'));
 const ProgressPage = React.lazy(() => import('pages/ProgressPage'));
-const TablePage = React.lazy(() => import('pages/TablePage'));
+// const TablePage = React.lazy(() => import('pages/TablePage'));
+const CategoryPage = React.lazy(() => import('pages/CategoryPage'));
 // const CatalogoPage = React.lazy(() => import('pages/TypographyPage'));
 const CatalogoPage = React.lazy(() => import('pages/CatalogoPage'));
 const WidgetPage = React.lazy(() => import('pages/WidgetPage'));
@@ -31,8 +32,6 @@ const getBasename = () => {
 };
 
 class App extends React.Component {
-
-
 
   render() {
     return (
@@ -65,7 +64,7 @@ class App extends React.Component {
                 <Route exact path="/widgets" component={WidgetPage} />
                 <Route exact path="/catalogo"  component={CatalogoPage} />
                 <Route exact path="/alerts" component={AlertPage} />
-                <Route exact path="/tables" component={TablePage} />
+                <Route exact path="/category" component={CategoryPage} />
                 <Route exact path="/badges" component={BadgePage} />
                 <Route
                   exact
