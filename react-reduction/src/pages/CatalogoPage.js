@@ -1,5 +1,6 @@
 import Page from 'components/Page';
 import React,{Component} from 'react';
+import bn from 'utils/bemnames';
 import { Card,
 CardBody,
 CardHeader,
@@ -8,37 +9,58 @@ Row,
 Table,
 Button,
 Modal,
+NavItem,
+NavLink as BSNavLink,
 ModalBody,
 ModalFooter,
 ModalHeader, } from 'reactstrap';
-// import {
-//
-//   Button,
-//
-//   CardSubtitle,
-//
-//   CardText,
-// } from 'reactstrap';
+
+import { NavLink } from 'react-router-dom';
+
+import {
+  MdAccountCircle,
+  MdArrowDropDownCircle,
+  MdBorderAll,
+  MdBrush,
+  MdChromeReaderMode,
+  MdDashboard,
+  MdExtension,
+  MdGroupWork,
+  MdInsertChart,
+  MdKeyboardArrowDown,
+  MdNotificationsActive,
+  MdPages,
+  MdRadioButtonChecked,
+  MdSend,
+  MdStar,
+  MdTextFields,
+  MdViewCarousel,
+  MdViewDay,
+  MdViewList,
+  MdWeb,
+  MdTerain,
+  MdWidgets,
+} from 'react-icons/md';
+
 const tableTypes = ['', 'bordered', 'striped', 'hover'];
+// const newPro = [
+//   { to: '/catalogo/add', exact: true},
+// ];
 
 class CatalogoPage extends Component {
-
 constructor(props) {
     super(props);
     this.state = { products: [] }
-  }
+    }
 
-  componentDidMount() {
-    fetch('http://192.168.100.72:8090/ecommerce/api/producto')
+  componentWillMount() {
+    fetch('http://localhost:8090/ecommerce/api/producto')
       .then(response => response.json())
       .then((products) => {
         this.setState({ products: products })
       })
     .catch(console.log)
-    // var ajaxRequest = new XMLHttpRequest();
-    // ajaxRequest.open("GET", "http://192.168.100.72:8090/ecommerce/api/producto", true);
-    // ajaxRequest.send();
-  }
+    }
 
   // consultarApi = () =>{
   //   fetch('http://192.168.100.72:8090/ecommerce/api/producto')
@@ -73,7 +95,6 @@ constructor(props) {
 
 render(){
   return (
-
     <Page
       title="Catalogo"
       breadcrumbs={[{ name: 'catalogos', active: true }]}
@@ -83,11 +104,16 @@ render(){
     <Col className="col-10">
     </Col>
     <Col className="col-2">
-  {/*  <Button color="dark" size="sm">
-      Add new product
-    </Button>*/}
+  <Button color="danger"
+          id={`${"Add new product"}`}
+          className="text-uppercase"
+          tag={NavLink}
+          to={'/catalogo/add'}
+        >
+          <span className="">{"Add new product"}</span>
+  </Button>
 
-    <Card>
+  {/*  <Card>
       <CardBody>
         <Button color="danger" onClick={this.toggle('nested_parent')}>
           Add new product
@@ -100,14 +126,7 @@ render(){
             Modal title
           </ModalHeader>
           <ModalBody>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-            sed do eiusmod tempor incididunt ut labore et dolore magna
-            aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-            ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            Duis aute irure dolor in reprehenderit in voluptate velit
-            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-            occaecat cupidatat non proident, sunt in culpa qui officia
-            deserunt mollit anim id est laborum.
+            Modal's content.
             <br />
             <Button color="success" onClick={this.toggle('nested')}>
               Show Nested Model
@@ -143,7 +162,7 @@ render(){
           </ModalFooter>
         </Modal>
       </CardBody>
-    </Card>
+    </Card> */}
 
     </Col>
     </Row>
@@ -155,7 +174,7 @@ render(){
                 <Row>
                   <Col>
                     <Card body>
-                      <Table {...{ ['hover']: true }}>
+                      <Table {...{ ['hover']: true } }>
                         <thead>
                           <tr>
                             <th>Code</th>

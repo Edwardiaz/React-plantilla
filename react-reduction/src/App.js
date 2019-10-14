@@ -26,6 +26,7 @@ const CategoryPage = React.lazy(() => import('pages/CategoryPage'));
 // const CatalogoPage = React.lazy(() => import('pages/TypographyPage'));
 const CatalogoPage = React.lazy(() => import('pages/CatalogoPage'));
 const WidgetPage = React.lazy(() => import('pages/WidgetPage'));
+const FormProdPage = React.lazy(() => import('pages/FormProdPage'));
 
 const getBasename = () => {
   return `/${process.env.PUBLIC_URL.split('/').pop()}`;
@@ -65,9 +66,10 @@ class App extends React.Component {
                 <Route exact path="/catalogo"  component={CatalogoPage} />
                 <Route exact path="/alerts" component={AlertPage} />
                 <Route exact path="/category" component={CategoryPage} />
+                <Route exact path="/products" component={FormProdPage}/>
                 <Route exact path="/badges" component={BadgePage} />
-                <Route
-                  exact
+                <Route exact path="/catalogo/add" component={FormProdPage}/>
+                  <Route exact
                   path="/button-groups"
                   component={ButtonGroupPage}
                 />
