@@ -24,7 +24,7 @@ const ProgressPage = React.lazy(() => import('pages/ProgressPage'));
 // const TablePage = React.lazy(() => import('pages/TablePage'));
 const CategoryPage = React.lazy(() => import('pages/CategoryPage'));
 // const CatalogoPage = React.lazy(() => import('pages/TypographyPage'));
-const CatalogoPage = React.lazy(() => import('pages/CatalogoPage'));
+const CataloguePage = React.lazy(() => import('pages/CataloguePage'));
 const WidgetPage = React.lazy(() => import('pages/WidgetPage'));
 const FormProdPage = React.lazy(() => import('pages/FormProdPage'));
 
@@ -63,12 +63,12 @@ class App extends React.Component {
                 <Route exact path="/buttons" component={ButtonPage} />
                 <Route exact path="/cards" component={CardPage} />
                 <Route exact path="/widgets" component={WidgetPage} />
-                <Route exact path="/catalogo"  component={CatalogoPage} />
+                <Route exact path="/catalogue"  component={CataloguePage} />
                 <Route exact path="/alerts" component={AlertPage} />
                 <Route exact path="/category" component={CategoryPage} />
                 <Route exact path="/products" component={FormProdPage}/>
                 <Route exact path="/badges" component={BadgePage} />
-                <Route exact path="/catalogo/add" component={FormProdPage}/>
+                <Route exact path="/catalogue/add" component={FormProdPage}/>
                   <Route exact
                   path="/button-groups"
                   component={ButtonGroupPage}

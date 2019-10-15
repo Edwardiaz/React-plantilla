@@ -1,5 +1,5 @@
 import Page from 'components/Page';
-import React from 'react';
+import React, {Component} from 'react';
 import detailImg from 'assets/img/miniatura 1.png';
 import {
   Button,
@@ -16,64 +16,133 @@ import {
   Row,
 } from 'reactstrap';
 
-const FormProdPage = () => {
-  return (
-    <Page title="Forms" breadcrumbs={[{ name: 'Forms', active: true }]}>
-      <Row>
-        <Col xl={6} lg={12} md={12}>
-          <label>here goes an image</label>
-          <img src={detailImg} width="40"
-          height="30" className="pr-2" alt=""></img>
-        </Col>
 
-        <Col xl={6} lg={12} md={12}>
+// const FormProdPage = () => {
+class FormProdPage extends Component{
+
+  constructor(){
+    super();
+    this.state = {pro: []};
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  // busquedaRef = React.createRef();
+
+  // handleSubmit(event){
+  handleSubmit = (event) =>{
+    event.preventDefault();
+    // const data = new FormData(event.target);
+
+    fetch('http://localhost:8090/ecommerce/api/pro',{
+      method: 'POST',
+      body: JSON.stringify({
+
+        productCode: document.getElementById('productCode').value,
+        sku: document.getElementById('sku').value,
+        nameProducts: document.getElementById('nameProducts').value,
+        description: document.getElementById('description').value
+
+    }),
+      headers: {
+        "Content-Type": "application/json; charset=UTF-8"
+      }
+
+    }).then(response =>{
+      return response.json()
+    }).then(json =>{
+      console.log(json)
+      this.setState({
+        pro:json
+      });
+    })
+
+  }
+
+  render(){
+  return (
+    <Page title="New product" breadcrumbs={[{ name: 'Catalogue', active: true }]}>
+      <Row>
+        <Col className="col-2"></Col>
+        <Col xl={8} lg={12} md={12}>
           <Card>
-            <CardHeader>Datos del nuevo producto</CardHeader>
+            <CardHeader>New product's information</CardHeader>
             <CardBody>
-              <Form>
+              <Form onSubmit={this.handleSubmit}>
                 <FormGroup row>
-                  <Label for="exampleEmail" sm={2}>
-                    Email
+                  <Label for="productCode" sm={2}>
+                    Code
                   </Label>
                   <Col sm={10}>
                     <Input
-                      type="email"
-                      name="email"
-                      placeholder="with a placeholder"
+
+                      id="productCode"
+                      type="text"
+                      name="productCode"
+                      placeholder="product's code"
                     />
                   </Col>
                 </FormGroup>
                 <FormGroup row>
-                  <Label for="examplePassword" sm={2}>
-                    Password
+                  <Label for="sku" sm={2}>
+                    SKU
                   </Label>
                   <Col sm={10}>
                     <Input
-                      type="password"
-                      name="password"
-                      placeholder="password placeholder"
+
+                      id="sku"
+                      type="text"
+                      name="sku"
+                      placeholder="e.g: AA"
                     />
                   </Col>
                 </FormGroup>
                 <FormGroup row>
+                  <Label for="nameProducts" sm={2}>
+                    Name
+                  </Label>
+                  <Col sm={10}>
+                    <Input
+
+                      id="nameProducts"
+                      type="text"
+                      name="nameProducts"
+                      placeholder="..."
+                    />
+                  </Col>
+                </FormGroup>
+                <FormGroup row>
+                  <Label for="description" sm={2}>
+                    Description
+                  </Label>
+                  <Col sm={10}>
+                    <Input
+
+                      id="description"
+                      type="text"
+                      name="description"
+                      placeholder="..."
+                    />
+                  </Col>
+                </FormGroup>
+              {/*  <FormGroup row>
                   <Label for="exampleSelect" sm={2}>
                     Select
                   </Label>
                   <Col sm={10}>
                     <Input type="select" name="select" />
                   </Col>
-                </FormGroup>
-                <FormGroup row>
+                </FormGroup> */}
+                {/* <FormGroup row>
                   <Label for="exampleSelectMulti" sm={2}>
                     Select Multiple
                   </Label>
                   <Col sm={10}>
                     <Input type="select" name="selectMulti" multiple />
                   </Col>
-                </FormGroup>
+                </FormGroup> * /}
                 <FormGroup row>
-                  <Label for="exampleText" sm={2}>
-                    Text Area
+                  <Label for="description" sm={2}>
+                    Description
                   </Label>
                   <Col sm={10}>
                     <Input type="textarea" name="text" />
@@ -128,7 +197,7 @@ const FormProdPage = () => {
                       </Label>
                     </FormGroup>
                   </Col>
-                </FormGroup>
+                </FormGroup> */}
                 <FormGroup check row>
                   <Col sm={{ size: 10, offset: 2 }}>
                     <Button>Submit</Button>
@@ -141,6 +210,7 @@ const FormProdPage = () => {
       </Row>
     </Page>
   );
-};
+}
+}
 
 export default FormProdPage;
